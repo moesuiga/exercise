@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="author" content="suiga">
+  <meta name="keyword" content="">
+  <meta name="description" content="">
+  <meta name="theme-color" content="#222">
+  <meta name="color-scheme" content="dark">
+  <title>黑白</title>
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(90deg, #000 50%, #fff 50%, #fff);
+      color: #fff;
+      user-select: none;
+    }
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+    h1 {
+      font-size: 100px;
+      mix-blend-mode: difference;
+      animation: scare 1s linear infinite;
+      text-align: justify;
+      word-break: break-all;
+      width: 2.5em;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      h1 {
+        animation: none;
+      }
+    }
+    h1 > span:nth-child(even) {
+      position: relative;
+      top: 0.5em;
+    }
+    @keyframes scare {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="black-white-bear.png" alt="黑白熊">
+    <h1>
+      <span>黑</span>
+      <span>白</span>
+      <span>熊</span>
+      <span>来</span>
+      <span>袭</span>
+      <span>！</span>
+    </h1>
+  </main>
+  <!-- <div class="bear">
+    <div class="bear-head">
+      <div class="ear ear--left"></div>
+      <div class="ear ear--right"></div>
+      <div class="eye--left"></div>
+      <div class="eye--right"></div>
+      <div class="mouse">
+        <div class="mouse--left"></div>
+        <div class="mouse--right"></div>
+      </div>
+    </div>
+  </div> -->
+</body>
+</html>
