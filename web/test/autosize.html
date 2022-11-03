@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="author" content="suiga">
+  <meta name="keyword" content="">
+  <meta name="description" content="">
+  <meta name="theme-color" content="#fff">
+  <meta name="color-scheme" content="light dark">
+  <script type="module" src="../lib/prefers/colorScheme.js"></script>
+  <title>Auto change font size</title>
+  <style>
+    .box {
+      margin: 20px auto;
+      padding: 12px;
+      width: 100px;
+      border: 1px solid red;
+    }
+    .container {
+      width: 100%;
+      white-space: nowrap;
+      font-size: 20px;
+      background: var();
+    }
+    .inner {
+      width: fit-content;
+      transform-origin: 0 50%;
+      opacity: 0;
+    }
+
+    .resizeme {
+      resize: both;
+      margin: 0;
+      padding: 0;
+      height: 200px;
+      width: 400px;
+      background-color: lightblue;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="container">
+      <p class="inner">Short</p>
+      <p class="inner">Long content.</p>
+      <p class="inner">This paragraph is in the box.</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const container = document.querySelector('.container');
+      const inners = document.querySelectorAll('.inner');
+      const boxWidth = container.clientWidth;
+      inners.forEach((inner) => {
+        const innerWidth = inner.clientWidth;
+        console.log(boxWidth, innerWidth);
+        inner.style.transform = `scale(${Math.min(1, boxWidth / innerWidth)})`;
+        inner.style.opacity = '1';
+      })
+    })()
+  </script>
+
+  <hr>
+  <div class="resizeme">
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 200 100"
+      preserveAspectRatio="xMinYMin meet"
+    >
+        <foreignObject width="100%" height="100%" xmlns="http://www.w3.org/1999/xhtml">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="background-color:lightgreen;">
+            <p>Resize the blue box.Resize the blue box.Resize the blue box.</p>
+          </div>
+        </foreignObject>
+      </svg>
+  </div>
+</body>
+</html>

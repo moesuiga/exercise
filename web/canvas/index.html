@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="author" content="suiga">
+    <meta name="keyword" content="canvas">
+    <meta name="description" content="">
+    <meta name="theme-color" content="#fff">
+    <meta name="color-scheme" content="light dark">
+    <title>Canvas</title>
+    <style>
+      main {
+        margin: 20px auto;
+        max-width: 750px;
+      }
+      canvas {
+        margin: 0 auto;
+        display: block;
+        width: 200px;
+        height: 100px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <canvas id="canvas" width="400" height="200">Your browser doesn't support &lt;canvas&gt;, please upgrade it.</canvas>
+
+      <p>
+        The canvas element above this paragraph, is both set width, height properties and width, height styles.
+      </p>
+      <p>
+        The size of the canvas, displayed in browser, is 200 x 100. That is the CSS style set it.
+      </p>
+      <p>
+        What does the properties `width` and `height` do?
+      </p>
+      <p>
+        They set the true size of the canvas. It just likes a picture. The picture has its own width and height, and you can also give an &lt;img&gt; element a custom width and height, they don't have to be the same.
+      </p>
+    </main>
+    <script type="module">
+      import { isColorSchemeDark, mqList } from '../lib/prefers/colorScheme.js';
+
+      function draw(isDark) {
+        const cvs = document.getElementById('canvas');
+        const ctx = cvs.getContext('2d');
+        ctx.fillStyle = isDark ? 'hsl(200,66%,66%)' : 'hsl(37, 72%, 45%)';
+        ctx.fillRect(40, 20, 320, 160);
+        ctx.fillStyle = isDark ? 'hsl(332,85%,48%)' : 'hsl(233, 84%, 60%)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = '32px / 44px Aria';
+        ctx.fillText('canvas true width', 200, 56);
+        ctx.fillText(`${cvs.width}px`, 200, 100);
+        ctx.fillText(`scale ${cvs.clientWidth/cvs.width} to display`, 200, 144);
+      }
+      draw(isColorSchemeDark());
+      if (mqList.addEventListener) {
+        mqList.addEventListener('change', (e) => {
+          draw(!!e.matches);
+        });
+      }
+    </script>
+  </body>
+</html>
