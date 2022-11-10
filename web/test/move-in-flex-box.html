@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="author" content="suiga">
+  <meta name="keyword" content="flex, flex-box, distance, length">
+  <meta name="description" content="">
+  <meta name="theme-color" content="#fff">
+  <meta name="color-scheme" content="light dark">
+  <title>Move distance into flex-box</title>
+  <script async type="module" src="../lib/prefers/colorScheme.js"></script>
+  <style>
+    main {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      /* margin: 20px auto; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid red;
+    }
+    .inner {
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+      /* margin-top: 100px; */
+      transform: translateY(-50px);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="box">
+      <div class="inner"></div>
+    </div>
+    <p>
+      The box is a flex-box, and center the `inner` box into it.
+      <br>
+      Use `margin` to move the inner box, it moves half the distance.
+      <br>
+      Use `transform` to move the inner box, it moves full the distance.
+    </p>
+  </main>
+</body>
+</html>
